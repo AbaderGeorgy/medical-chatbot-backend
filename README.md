@@ -1,3 +1,38 @@
+# React + Flask + Gemini Integration
+
+## Project Architecture
+
+`React frontend -> Flask API -> Gemini API -> Flask -> React`
+
+## Backend Setup (`backend`)
+
+1. Create a virtual environment and activate it.
+2. Install dependencies:
+   - `pip install -r requirements.txt`
+3. Copy `backend/.env.example` to `backend/.env` and set:
+   - `GEMINI_API_KEY=your_real_key`
+   - `FRONTEND_ORIGIN=http://localhost:3000`
+4. Run Flask:
+   - `python app.py`
+
+The backend exposes:
+- `POST /chat`
+- Request body: `{ "message": "..." }`
+- Response body: `{ "reply": "..." }`
+
+## Frontend Setup (`project`)
+
+1. Copy `.env.example` to `.env`
+2. Set `REACT_APP_API_BASE_URL=http://localhost:5000`
+3. Run:
+   - `npm install`
+   - `npm start`
+
+## Notes
+
+- Keep Gemini API key only in backend environment variables.
+- Do not prefix backend secrets with `REACT_APP_` because frontend env vars are public in browser bundles.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
